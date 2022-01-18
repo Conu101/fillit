@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:56:33 by nsamoilo          #+#    #+#             */
-/*   Updated: 2022/01/18 14:20:46 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 21:18:43 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_map
 typedef struct s_piece
 {
 	char	letter;
+	int		topleft_x;
+	int		topleft_y;
 	int		leader_coord[2];
 	int		friends_coord[6];
 	int		type;

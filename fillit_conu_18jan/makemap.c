@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:25:06 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/17 15:52:59 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 20:45:41 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,21 @@ void	free_map(t_map *map, int map_size)
 	}
 	ft_memdel((void **)&(map->map_array));
 	ft_memdel((void **)&map);
+}
+
+/*
+** set all chars of the map to '.'
+*/
+void	*reset_map(t_map *map, int map_size)
+{
+	int i;
+
+	i = 0;
+	while (i < map_size)
+	{
+		ft_memset(map->map_array[i], '.', map_size);
+		i++;
+	}
 }
 
 /*

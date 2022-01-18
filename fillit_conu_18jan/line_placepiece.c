@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:10:27 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/18 13:28:06 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 18:32:50 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	line_placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 		piece->lined = placepiece(piece, map, x_offset + x_var, y_offset);
 		if (!piece->lined)
 			x_var++;
-	}
+		piece->topleft_x = x_var;
+	}	
 	return (piece->lined);
 }
 

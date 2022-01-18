@@ -6,42 +6,50 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:10:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/18 21:59:12 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 17:37:30 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 //piecelist = struct of all pieces
-// map is the struct of the map populated with the dots and letters, modified
-// through the function and returned.
+// map is the struct of the map populated with the dots and letters
+// piece is the piece we want to offset
 // x_offset and y_offset are the offset values for the piece
 t_map	*solve(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset)
 {
 	int	i;
 	int	sum;
 
-	placepiece(piecelist->list[0], map, x_offset, y_offset);
-	i = 1;
-	sum = 1;
+	i = 0;
+	while (i >= 0 && i < piecelist->count)
+	{
+		piecelist->list[i]->ingrid = grid_placepiece(piecelist->list[i], map, x_offset, y_offset);
+		if (!piecelist->list[i]->ingrid)
+		{
+			cancelplacepiece(piecelist->list[i - 1], map, x_offset, y_offset);
+			x_offset += 1;
+			while (x_offset <= map->map_size - 1)
+			{
+				solve(piecelist, map, x_offset, y_offset);
+			}
+		}
+		i++;
+	}
+	//printf("\nbreak 3\n");
+
+// or check afterwards if all pieces were successfuly placed
+	sum = 0;
+	i = 0;
 	while (i < piecelist->count)
 	{
-		piecelist->list[i]->ingrid = grid_placepiece(piecelist->list[i], map, 0, 0);
-		if (piecelist->list[i]->ingrid == 1)
-			sum++;
-		i++;
-		if (sum != i)
-		{
-			//remove the last piece able to fit on the map and start
-			// trying to place it back from one degree offset
-			cancelplacepiece(piecelist->list[sum], map, piecelist->list[sum]->topleft_x, piecelist->list[sum]->topleft_y);
-			piecelist->list[sum]->ingrid = grid_placepiece(piecelist->list[sum], map, piecelist->list[sum]->topleft_x + 1, piecelist->list[sum]->topleft_y);
-			if (piecelist->list[sum]->ingrid == 1)
-				sum++;
-			else
-				modif_solve_param(piecelist, map, x_offset, y_offset);
-		}
-		else if (sum == i)
-			return (map);
+		sum = sum + piecelist->list[i++]->placed;
 	}
-	
+	if (sum != piecelist->count)
+	//means that all pieces were not placed -> do something :D
+	if (y_offset == map->map_size)
+	{
+		map->map_size += 1;
+	}
+	return (map);
+}
