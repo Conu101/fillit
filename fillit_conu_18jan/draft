@@ -1,0 +1,16 @@
+
+0 {-1, 1, 0, 1, 1, 1}
+1 {1, 0, 0, 1, 1, 1}
+.
+.
+. 
+18 {-1, 0, 0, 1, 1, 1}
+
+typedef struct s_piece
+{
+	char	letter;
+	int		leader_coord[2]
+	int		friends_coord[6]
+	int		type;
+	struct s_piece	next_piece;
+}	t_piece;
