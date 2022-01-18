@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:10:27 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/18 21:56:07 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:41:02 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 int	grid_placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 {
 	int	y_var;
+	int	new_x_offset;
 
 	y_var = 0;
+	new_x_offset = x_offset;
 	while (y_offset + y_var >= 0 && y_offset + y_var < map->map_size)
 	{
-		piece->ingrid = line_placepiece(piece, map, x_offset, y_offset + y_var);
+		piece->ingrid = line_placepiece(piece, map, new_x_offset, y_offset + y_var);
 		if (!piece->ingrid)
 		{
 			y_var++;
-			x_offset = 0; // to start from the beginning of the line at next line
+			new_x_offset = 0; // to start from the beginning of the line at next line
 		}
 		piece->topleft_y = y_var;
 	}

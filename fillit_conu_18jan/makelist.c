@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:04:56 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/17 16:31:15 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:35:02 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** fn makepiece, with the letter assigned to the made piece.
 ** Returns a linked list of piece structs
 */
-t_piece		*makelist(int *types_array, int count)
+t_piecelist	*makelist(int *types_array, int count)
 {
 	t_piece *current;
 	t_piece *first;

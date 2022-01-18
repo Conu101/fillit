@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:56:33 by nsamoilo          #+#    #+#             */
-/*   Updated: 2022/01/18 21:18:43 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:41:52 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # include <string.h>
 # include <sys/stat.h>
 
+/*
 typedef struct s_point
 {
 	int	row;
 	int	column;
 }	t_point;
+*/
 
 typedef struct s_map
 {
@@ -44,7 +46,7 @@ typedef struct s_piece
 	int		lined;
 	int		ingrid;
 	struct s_piece	*next;
-}		t_piece;
+}	t_piece;
 
 typedef struct s_piecelist
 {
@@ -52,11 +54,21 @@ typedef struct s_piecelist
 	int		count;
 }	t_piecelist;
 
-t_piece		*makepiece(int type, char letter);
+void		cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
+void		free_map(t_map *map, int map_size);
+void		modif_solve_param(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset);
+void		print_map(t_map *map, int size);
+void		reset_map(t_map *map, int map_size);
+int			allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset);
 int			attrib_friends_coord(type, i);
 int			*ft_assign_types(char **array, char **types, int size);
-t_map		*makemap(int map_size);
+int			get_map_size(int count);
+int			grid_placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
+int			line_placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
 int			placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
-void		cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
+t_piece		*makepiece(int type, char letter);
+t_piecelist	*makelist(int *types_array, int count);
+t_map		*makemap(int map_size);
+t_map		*solve(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset);
 
 #endif

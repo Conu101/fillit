@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:25:06 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/18 20:45:41 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/18 22:33:26 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 ** The very minimal map size is the square root of the total number
 ** of blocks (each piece has 4 blocks so 4 * number of pieces)
 */
-
 int		get_map_size(int count)
 {
 	int	map_size;
@@ -64,7 +63,7 @@ void	free_map(t_map *map, int map_size)
 /*
 ** set all chars of the map to '.'
 */
-void	*reset_map(t_map *map, int map_size)
+void	reset_map(t_map *map, int map_size)
 {
 	int i;
 
