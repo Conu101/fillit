@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:10:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/18 21:59:12 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/19 08:43:06 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 // x_offset and y_offset are the offset values for the piece
 t_map	*solve(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset)
 {
-	int	i;
-	int	sum;
+	int		i;
+	int		sum;
+	t_map	*newmap;
 
 	placepiece(piecelist->list[0], map, x_offset, y_offset);
 	i = 1;
@@ -39,7 +40,8 @@ t_map	*solve(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset)
 			if (piecelist->list[sum]->ingrid == 1)
 				sum++;
 			else
-				modif_solve_param(piecelist, map, x_offset, y_offset);
+				newmap = modif_solve_param(piecelist, map, x_offset, y_offset);
+				return(newmap);
 		}
 		else if (sum == i)
 			return (map);

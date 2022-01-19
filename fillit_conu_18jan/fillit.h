@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:56:33 by nsamoilo          #+#    #+#             */
-/*   Updated: 2022/01/18 22:41:52 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/19 08:42:19 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_piecelist
 
 void		cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
 void		free_map(t_map *map, int map_size);
-void		modif_solve_param(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset);
 void		print_map(t_map *map, int size);
 void		reset_map(t_map *map, int map_size);
 int			allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset);
@@ -69,6 +68,7 @@ int			placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset);
 t_piece		*makepiece(int type, char letter);
 t_piecelist	*makelist(int *types_array, int count);
 t_map		*makemap(int map_size);
+t_map		*modif_solve_param(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset);
 t_map		*solve(t_piecelist *piecelist, t_map *map, int x_offset, int y_offset);
 
 #endif
