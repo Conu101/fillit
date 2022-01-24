@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-/*static void	ft_print_int_array(int *arr, int count)
+static void	ft_print_int_array(int *arr, int count)
 {
 	int	i;
 	
@@ -29,7 +29,7 @@
 		//printf("\n%d\n", i);
 		i++;
 	}
-}*/
+}
 
 int	create_coords(char *str)
 {
@@ -72,7 +72,6 @@ int main(void)
 	//printf("\n%s\n", str);
 	//abs_to_rel(coords, 2, coords[0], coords[1]);
 	//ft_print_int_array(coords, count);
-	//print_int_array(coords, ((ft_strlen(str) / 21) * 8));
 	//print_piece_array(list, count);
 	//free(str);
 	//printf("\nThe mapsize from main\n");
