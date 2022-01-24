@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:52:11 by tburakow          #+#    #+#             */
-/*   Updated: 2022/01/23 14:54:53 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/24 13:37:21 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	char	*str;
 	int		fd;
@@ -29,15 +29,25 @@ int	main(void)
 	int		map_size;
 	t_map	*map;
 
+	if (argc != 2)
+	{
+		ft_putstr("usage: enter one filename only after the executable.\n");
+			return (1);
+	}
 	str = (char *)malloc(sizeof(char) * 546);
-	fd = open("trial1.txt", O_RDONLY);	
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("error: invalid filename.\n");
+			return (1);
+	}
 	ret = read(fd, str, 546);
 	str[ret] = '\0';
 	count = (ft_strlen(str) / 21);
 	if (ft_check_string(str) != 1)
 	{
-		printf("\n%s\n", "str_check fail.");
-		return (0);
+		ft_putstr("error: checkstring failed.\n");
+			return (1);
 	}
 	coords = ft_strslice(str);
 	map_size = get_map_size(count);
