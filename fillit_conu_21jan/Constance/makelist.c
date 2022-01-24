@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:04:56 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/19 21:26:00 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/23 14:46:46 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_piece	*makelist(int *list_coord_array, int count)
 		if (tetriletter == 'A')
 		{
 			first = makepiece(list_coord_array, tetriletter, start);
-			first->topleft_x = 0;
-			first->topleft_y = 0;
 			current = (t_piece *)malloc(sizeof(t_piece));
 			current = first;
 		}
@@ -43,8 +41,6 @@ t_piece	*makelist(int *list_coord_array, int count)
 			start = start + 8;
 			current->next = makepiece(list_coord_array, tetriletter, start);
 			current = current->next;
-			current->topleft_x = 0;
-			current->topleft_y = 0;
 		}
 		tetriletter++;
 		i++;

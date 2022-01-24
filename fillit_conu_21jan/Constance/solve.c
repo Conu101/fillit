@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:37:08 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/21 19:56:25 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/23 15:04:17 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset, int count)
 
 	int	ret;
 	int	i;
-
 
 	//printf("\nmap before solving\n");
 	//print_map(map, map->map_size);
@@ -47,7 +46,6 @@ int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset, int count)
 		}
 		x_offset = 0;
 		y_offset++;
-	}
-	
+	}	
 	return (0);
 }

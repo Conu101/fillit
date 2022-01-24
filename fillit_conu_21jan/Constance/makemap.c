@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   makemap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:25:06 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/19 14:09:01 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:36:04 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,8 @@ void	free_map(t_map *map, int map_size)
 }
 
 /*
-** set all chars of the map to '.'
-*/
-void	reset_map(t_map *map, int map_size)
-{
-	int i;
-
-	i = 0;
-	while (i < map_size)
-	{
-		ft_memset(map->map_array[i], '.', map_size);
-		i++;
-	}
-}
-
-/*
-** memalloc the 2D imprint of the map
-** memalloc the array into the map 1st in 1D with strnew and set all 
-** chars of the string to '.'.
-** Then create 2D by repeating (mapsize) times.
+** create map of map_size with malloc and populate it 
+** entirely with '.'
 */
 t_map	*makemap(int map_size)
 {

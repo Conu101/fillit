@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:58:58 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/21 14:52:07 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/23 15:27:41 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_piece		*makepiece(int *coords, char tetriletter, int start)
 	piece = (t_piece *)malloc(sizeof(t_piece));
 	if (!piece)
 		return (NULL);
-	piece->rank = start/8;
+//	piece->rank = start/8; is rank used in Tuomas´ functions ??
 	i = 0;
 	while (i < 2)
 	{
@@ -36,8 +36,5 @@ t_piece		*makepiece(int *coords, char tetriletter, int start)
 		start++;
 	}
 	piece->letter = tetriletter;
-	piece->topleft_x = 0;
-	piece->topleft_y = 0;
-	piece->placed = 0;
 	return (piece);
 }
