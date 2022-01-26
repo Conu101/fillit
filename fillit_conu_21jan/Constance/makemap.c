@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:25:06 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/23 15:36:04 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/26 12:46:10 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** The very minimal map size is the square root of the total number
 ** of blocks (each piece has 4 blocks so 4 * number of pieces)
 */
-int		get_map_size(int count)
+int	get_map_size(int count)
 {
 	int	map_size;
 
@@ -32,7 +32,7 @@ int		get_map_size(int count)
 */
 void	print_map(t_map *map, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -48,7 +48,7 @@ void	print_map(t_map *map, int size)
 */
 void	free_map(t_map *map, int map_size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map_size)
@@ -70,7 +70,7 @@ t_map	*makemap(int map_size)
 	int		i;
 
 	map = (t_map *)ft_memalloc(sizeof(t_map));
-	map->map_array = (char**)ft_memalloc(sizeof(char*) * map_size);
+	map->map_array = (char **)ft_memalloc(sizeof(char *) * map_size);
 	i = 0;
 	while (i < map_size)
 	{

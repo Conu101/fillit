@@ -6,11 +6,11 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:27:47 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/21 16:31:34 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/26 12:38:14 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
+#include "fillit.h"
 
 int	mapready(t_map *map, int count)
 {
