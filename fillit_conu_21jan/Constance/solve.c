@@ -6,22 +6,16 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:37:08 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/21 19:56:25 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/26 12:34:21 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "fillit.h"
 
-int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset, int count)
+int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset)
 {
-
 	int	ret;
 	int	i;
-
-
-	//printf("\nmap before solving\n");
-	//print_map(map, map->map_size);
-	//printf("\n");
 
 	if (!piecelist)
 		return (1);
@@ -34,7 +28,7 @@ int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset, int count)
 			{
 				if (piecelist->next != NULL)
 				{
-					ret = solve(piecelist->next, map, 0, 0, count - 1);
+					ret = solve(piecelist->next, map, 0, 0);
 					if ( ret == 1)
 						return (1);
 					else
@@ -48,6 +42,5 @@ int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset, int count)
 		x_offset = 0;
 		y_offset++;
 	}
-	
 	return (0);
 }
