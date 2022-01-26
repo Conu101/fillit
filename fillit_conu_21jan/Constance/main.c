@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 16:52:11 by tburakow          #+#    #+#             */
-/*   Updated: 2022/01/26 12:35:43 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/26 13:16:53 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int argc, char **argv)
 	map = makemap(map_size);
 	list = makelist(coords, count);
 	solve(list, map, 0, 0);
-	
 	ret = mapready(map, count);
 	while (ret == 0)
 	{
