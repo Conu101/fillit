@@ -108,7 +108,7 @@ int	main(void)
 	t_map	*map;
 	//546
 	str = (char *)malloc(sizeof(char) * 546);
-	fd = open("trial2.txt", O_RDONLY);
+	fd = open("trialinv.txt", O_RDONLY);
 	//546
 	ret = read(fd, str, 546);
 	str[ret] = '\0';
