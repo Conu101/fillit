@@ -6,13 +6,41 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:54:22 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/26 12:49:48 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/27 10:39:47 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
+#include "fillit.h"
 
-void	cancelplacepiece(t_piece *piece, t_map *map)
+int	allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
+{
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+
+	y = piece->leader_coord[0];
+	x = piece->leader_coord[1];
+	if (x + x_offset >= map->map_size || y + y_offset >= map->map_size)
+		return (0);
+	j = 0;
+	i = 1;
+	while (j <= 4)
+	{
+		y = piece->leader_coord[0] + piece->friends_coord[j];
+		x = piece->leader_coord[1] + piece->friends_coord[i];
+		if (x + x_offset >= map->map_size || y + y_offset >= map->map_size)
+			return (0);
+		else
+		{
+			i = i + 2;
+			j = j + 2;
+		}
+	}
+	return (1);
+}
+
+int	cancelplacepiece(t_piece *piece, t_map *map)
 {
 	int	i;
 	int	j;
@@ -29,6 +57,7 @@ void	cancelplacepiece(t_piece *piece, t_map *map)
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
@@ -37,10 +66,10 @@ int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	int	y;
 	int	j;
 
+	if (allblocksinmap(piece, map, x_offset, y_offset) == 0)
+		return (0);
 	y = piece->leader_coord[0];
 	x = piece->leader_coord[1];
-	if (allblocksinmap(piece, map, x_offset, y_offset) == 0)
-		return(0);
 	j = 0;
 	while (j < 7)
 	{
@@ -55,9 +84,6 @@ int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 			break ;
 	}
 	if (j != 8)
-	{
-		cancelplacepiece(piece, map);
-		return (0);
-	}
+		return (cancelplacepiece(piece, map));
 	return (1);
 }

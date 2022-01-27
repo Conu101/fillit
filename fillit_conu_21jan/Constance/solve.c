@@ -6,30 +6,25 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:37:08 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/26 12:34:21 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/27 10:42:21 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
+#include "fillit.h"
 
 int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset)
 {
-	int	ret;
-	int	i;
-
 	if (!piecelist)
-		return (1);
+		return (0);
 	while (y_offset < map->map_size)
 	{
 		while (x_offset < map->map_size - piecelist->leader_coord[1])
 		{
-			ret = placepiece(piecelist, map, x_offset, y_offset);
-			if (ret == 1)
+			if (placepiece(piecelist, map, x_offset, y_offset) == 1)
 			{
 				if (piecelist->next != NULL)
 				{
-					ret = solve(piecelist->next, map, 0, 0);
-					if ( ret == 1)
+					if (solve(piecelist->next, map, 0, 0) == 1)
 						return (1);
 					else
 						cancelplacepiece(piecelist, map);

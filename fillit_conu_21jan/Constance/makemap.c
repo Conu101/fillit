@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:25:06 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/26 12:46:10 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/01/27 10:42:07 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ int	get_map_size(int count)
 	while (map_size * map_size < 4 * count)
 		map_size++;
 	return (map_size);
+}
+
+/*
+** free a map too small and create new map one size bigger.
+*/
+t_map	*increase_mapsize(t_map *map)
+{
+	int		new_mapsize;
+	t_map	*newmap;
+
+	new_mapsize = map->map_size + 1;
+	free_map(map, map->map_size);
+	newmap = makemap(new_mapsize);
+	if (newmap != NULL)
+		return (newmap);
+	return (NULL);
 }
 
 /*
