@@ -44,7 +44,8 @@ int	create_coords(char *str)
 	jkl[2] = 0;
 	len = ft_strlen(str);
 	coords = (int *)malloc(sizeof(int) * (len / 21) * 8);
-	split_and_offset(str, jkl, len, coords);
+	if (split_and_offset(str, jkl, len, coords) == 0)
+		return (0);
 	//ft_print_int_array(coords, (len / 21) * 8);
 	return (1);
 }
