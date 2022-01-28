@@ -17,11 +17,12 @@ int	ft_check_string(char *str)
 	int	i;
 	int j;
 	int k;
-	//int cnt;
 
 	i = 0;
 	j = 4;
 	k = 20;
+	if ((ft_strlen(str) + 1) % 21 != 0)
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] != '.' && str[i] != '#' && str[i] != '\n')

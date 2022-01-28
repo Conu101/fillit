@@ -114,6 +114,6 @@ int	*split_and_offset(char *str, size_t *jkl, size_t len, int *coords)
 			return (0);
 		jkl[2] = 0;
 	}
-	ft_print_int_array(coords, len / 21);
+	ft_print_int_array(coords, (len + 1) / 21);
 	return (coords);
 }
