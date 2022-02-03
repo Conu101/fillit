@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-static void	ft_print_int_array(int *arr, int count)
+/*static void	ft_print_int_array(int *arr, int count)
 {
 	int	i;
 	
@@ -29,7 +29,7 @@ static void	ft_print_int_array(int *arr, int count)
 		//printf("\n%d\n", i);
 		i++;
 	}
-}
+}*/
 
 int	create_coords(char *str)
 {
@@ -62,13 +62,20 @@ int main(void)
 	//fd = open(argv[1], O_RDONLY);
 	fd = open("trial.txt", O_RDONLY);
 	ret = read(fd, str, 546);
+	str[ret] = '\0';
 	count = (ft_strlen(str) / 21);
 	//if (argc != 2)
 	//	return (0);
 	if (ft_check_string(str) != 1)
+	{
+		printf("\nnot a valid map file.\n");
 		return (0);
+	}
 	if (create_coords(str) != 1)
+	{
+		printf("\ncoord creation fail.\n");
 		return (0);
+	}
 	//printf("\nHere comes the string\n");
 	//printf("\n%s\n", str);
 	//abs_to_rel(coords, 2, coords[0], coords[1]);

@@ -16,23 +16,31 @@ int	ft_check_string(char *str)
 {
 	int	i;
 	int j;
+	int k;
 
 	i = 0;
+	j = 4;
+	k = 20;
+	if ((ft_strlen(str) + 1) % 21 != 0)
+		return (0);
 	while (str[i] != '\0')
 	{
-		if (str[i] != '\n' && str[i] != '.' && str[i] != '#')
+		if (str[i] != '.' && str[i] != '#' && str[i] != '\n')
 			return (0);
-		if (j < 4 && str[i] == '\n')
-			return (0);
-		if ((i + 1)% 21 == 0 && i != 0 && str[i] != '\n')
-			return (0);
-		if (str[i] == '\n' && str[i + 2] == '\n')
-			return (0);
+		if (i == j)
+		{
+			if (str[i] != '\n')
+				return (0);
+			j += 5;
+		}
+		if (i == k)
+		{
+			if (str[i] != '\n')
+				return (0);
+			j = k + 5;
+			k += 21;
+		}
 		i++;
-		if ((i + 1) % 21 != 0)
-			j++;
-		if (j == 3)
-			j = 0;	
 	}
 	return (1);
 }
