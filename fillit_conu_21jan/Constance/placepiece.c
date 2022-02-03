@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:54:22 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/02/03 11:36:16 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/03 13:19:44 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,12 @@ int	cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset, int
 	y = piece->leader_coord[0] + piece->friends_coord[i];
 	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
 	i = i + 2;
-	if (j == 6)
+	if (j >= 6)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+		y = piece->leader_coord[0] + piece->friends_coord[i];
+		x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+		i = i + 2;
+	if (j == 8)
 		map->map_array[y + y_offset][x + x_offset] = '.';
 	return (0);
 }
