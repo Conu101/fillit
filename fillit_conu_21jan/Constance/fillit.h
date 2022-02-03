@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:56:33 by nsamoilo          #+#    #+#             */
-/*   Updated: 2022/01/27 10:05:43 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/03 11:28:34 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		print_map(t_map *map, int size);
 void		run_fillit(char *str, int count);
 int			allblocksinmap(t_piece *piece, t_map *map, int x_offset, \
 			int y_offset);
-int			cancelplacepiece(t_piece *piece, t_map *map);
+int			cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset, int j);
 int			*attrib_leader_coord(int *piece_coord_array, int i);
 int			*attrib_friends_coord(int *piece_coord_array, int i);
 int			get_map_size(int count);

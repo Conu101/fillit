@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:54:22 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/27 10:39:47 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/03 11:36:16 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,29 @@ int	allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	return (1);
 }
 
-int	cancelplacepiece(t_piece *piece, t_map *map)
+int	cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset, int j)
 {
+	int	y;
+	int	x;
 	int	i;
-	int	j;
-
+	
+	y = piece->leader_coord[0];
+	x = piece->leader_coord[1];
 	i = 0;
-	while (i < map->map_size)
-	{
-		j = 0;
-		while (j < map->map_size)
-		{
-			if (map->map_array[i][j] == piece->letter)
-				map->map_array[i][j] = '.';
-			j++;
-		}
-		i++;
-	}
+	if (j == 0)
+		return (0);
+	if (j >= 2)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+	y = piece->leader_coord[0] + piece->friends_coord[i];
+	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+	i = i + 2;
+	if (j >= 4)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+	y = piece->leader_coord[0] + piece->friends_coord[i];
+	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+	i = i + 2;
+	if (j == 6)
+		map->map_array[y + y_offset][x + x_offset] = '.';
 	return (0);
 }
 
@@ -84,6 +90,6 @@ int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 			break ;
 	}
 	if (j != 8)
-		return (cancelplacepiece(piece, map));
+		return (cancelplacepiece(piece, map, x_offset, y_offset, j));
 	return (1);
 }

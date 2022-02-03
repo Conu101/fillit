@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:37:08 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/27 10:42:21 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/03 11:37:37 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	solve(t_piece *piecelist, t_map *map, int x_offset, int y_offset)
 					if (solve(piecelist->next, map, 0, 0) == 1)
 						return (1);
 					else
-						cancelplacepiece(piecelist, map);
+						placepiece(piecelist, map, x_offset, y_offset);
 				}
 				else
 					return (1);
