@@ -22,6 +22,7 @@ Example: text file including 3 tetriminos <trial.txt>
 
 ...#
 
+
 ....
 
 #...
@@ -29,6 +30,7 @@ Example: text file including 3 tetriminos <trial.txt>
 #...
 
 ##..
+
 
 ...#
 
