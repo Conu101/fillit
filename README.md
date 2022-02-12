@@ -15,11 +15,8 @@ displays the usage and quits.
 Example: text file including 3 tetriminos <trial.txt>
 
 ...#
-
 ...#
-
 ...#
-
 ...#
 
 ....
