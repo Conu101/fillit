@@ -6,12 +6,15 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:54:22 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/02/03 14:50:56 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/04 11:55:55 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+/*
+** checks that all blocks of the tetrimino are within the bounds of teh map
+*/
 int	allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
 {
 	int	x;
@@ -40,6 +43,13 @@ int	allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	return (1);
 }
 
+/*
+** the value of piece->cancel was attributed by the value of the index j in 
+** placepiece (between 0 and 6) or set to 8 in run_fillit. 
+** Depending on its value we know if only the leader, or one or 2 or 3
+** friends were placed on the map and therefore need to be replaced by '.' as 
+** we cancel the placement of the piece. 
+*/
 int	cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 {
 	int	y;
@@ -69,6 +79,13 @@ int	cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	return (0);
 }
 
+/*
+** After verifying that the piece would be entireky within bounds, this 
+** function checks that the place of the leader is occupied by a '.' on 
+** the map, if yes same for each of the friends. If one of the blocks cannot
+** be placed i.e. the place is already occupied by another letter, we call 
+** cancelplacepiece to revert the blocks marked on the map to '.'.
+*/
 int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 {
 	int	x;
