@@ -15,18 +15,27 @@ displays the usage and quits.
 Example: text file including 3 tetriminos <trial.txt>
 
 ...#
+
 ...#
+
 ...#
+
 ...#
 
 ....
+
 #...
+
 #...
+
 ##..
 
 ...#
+
 ...#
+
 ..##
+
 ....
 
 
@@ -38,7 +47,10 @@ Command:
 Result on stdout:
 
 AB..
+
 AB.C
+
 ABBC
+
 A.CC
 
