@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_imax.c                                          :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchen <cchen@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/23 13:47:59 by cchen             #+#    #+#             */
-/*   Updated: 2021/12/23 13:48:28 by cchen            ###   ########.fr       */
+/*   Created: 2021/10/29 13:53:13 by tburakow          #+#    #+#             */
+/*   Updated: 2021/10/29 14:07:17 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_imax(const int n1, const int n2)
+int	ft_recursive_factorial(int nb)
 {
-	if (n1 > n2)
-		return (n1);
-	return (n2);
+	if (nb < 0 || nb > 12)
+		return (0);
+	else if (nb == 0 || nb == 1)
+		return (1);
+	else
+	{
+		nb *= ft_recursive_factorial(nb - 1);
+	}
+	return (nb);
 }

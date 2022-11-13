@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 18:24:28 by ctrouve           #+#    #+#              #
-#    Updated: 2022/01/13 11:52:36 by ctrouve          ###   ########.fr        #
+#    Updated: 2021/12/21 20:03:00 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,6 @@ FILES = ft_atoi \
 		ft_calloc \
 		ft_count_splits_str \
 		ft_find_next_str \
-		ft_imax \
-		ft_imin \
 		ft_isalnum \
 		ft_isalpha \
 		ft_isascii \
@@ -31,12 +29,6 @@ FILES = ft_atoi \
 		ft_isprint \
 		ft_itoa \
 		ft_is_whitespace \
-		ft_lstadd \
-		ft_lstdel \
-		ft_lstdelone \
-		ft_lstiter \
-		ft_lstmap \
-		ft_lstnew \
 		ft_memalloc \
 		ft_memccpy \
 		ft_memchr \
@@ -53,7 +45,6 @@ FILES = ft_atoi \
 		ft_putnbr \
 		ft_putstr_fd \
 		ft_putstr \
-		ft_realloc \
 		ft_strcat \
 		ft_strchr \
 		ft_strclr \

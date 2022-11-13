@@ -6,13 +6,13 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 10:25:06 by ctrouve           #+#    #+#              #
-#    Updated: 2022/02/12 13:04:07 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/02/08 15:18:42 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-FUNCTIONS = create_coords check_string \
+FUNCTIONS = create_coords ft_check_string ft_recursive_factorial \
 main makelist makemap makepiece placepiece run_fillit \
 set_hoffset set_voffset solve set_relative
 

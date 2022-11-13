@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 16:54:22 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/02/11 14:28:08 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/07 15:57:56 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,6 @@ int	allblocksinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	return (1);
 }
 
-static int	printletterinmap(t_piece *piece, t_map *map, int x_offset, int y_offset)
-{
-	int	x;
-	int	y;
-	int	j;
-
-	y = piece->leader_coord[0];
-	x = piece->leader_coord[1];
-	j = 0;
-	while (j < 7)
-	{
-		map->map_array[y + y_offset][x + x_offset] = piece->letter;
-		y = piece->leader_coord[0] + piece->friends_coord[j];
-		x = piece->leader_coord[1] + piece->friends_coord[j + 1];
-		j = j + 2;
-	}
-	return (1);
-}
-
 /*
 ** the value of piece->cancel was attributed by the value of the index j in 
 ** placepiece (between 0 and 6) or set to 8 in run_fillit. 
@@ -68,21 +49,31 @@ static int	printletterinmap(t_piece *piece, t_map *map, int x_offset, int y_offs
 */
 int	cancelplacepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 {
-	int	x;
 	int	y;
-	int	j;
+	int	x;
+	int	i;
 
 	y = piece->leader_coord[0];
 	x = piece->leader_coord[1];
-	j = 0;
-	while (j < 7)
-	{
+	i = 0;
+	if (piece->cancel >= 2)
 		map->map_array[y + y_offset][x + x_offset] = '.';
-		y = piece->leader_coord[0] + piece->friends_coord[j];
-		x = piece->leader_coord[1] + piece->friends_coord[j + 1];
-		j = j + 2;
-	}
-	return (1);
+	y = piece->leader_coord[0] + piece->friends_coord[i];
+	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+	i = i + 2;
+	if (piece->cancel >= 4)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+	y = piece->leader_coord[0] + piece->friends_coord[i];
+	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+	i = i + 2;
+	if (piece->cancel >= 6)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+	y = piece->leader_coord[0] + piece->friends_coord[i];
+	x = piece->leader_coord[1] + piece->friends_coord[i + 1];
+	i = i + 2;
+	if (piece->cancel == 8)
+		map->map_array[y + y_offset][x + x_offset] = '.';
+	return (0);
 }
 
 /*
@@ -108,6 +99,7 @@ int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 	{
 		if (map->map_array[y + y_offset][x + x_offset] == '.')
 		{
+			map->map_array[y + y_offset][x + x_offset] = piece->letter;
 			y = piece->leader_coord[0] + piece->friends_coord[j];
 			x = piece->leader_coord[1] + piece->friends_coord[j + 1];
 			j = j + 2;
@@ -115,8 +107,8 @@ int	placepiece(t_piece *piece, t_map *map, int x_offset, int y_offset)
 		else
 			break ;
 	}
+	piece->cancel = j;
 	if (j != 8)
-		return (0);
-	else
-		return (printletterinmap(piece, map, x_offset, y_offset));
+		return (cancelplacepiece(piece, map, x_offset, y_offset));
+	return (1);
 }

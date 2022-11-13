@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:18:10 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/02/12 13:03:43 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/10 16:24:26 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_piece
 	char			letter;
 	int				leader_coord[2];
 	int				friends_coord[6];
+	int				cancel;
 	struct s_piece	*next;
 }	t_piece;
 
@@ -49,7 +50,7 @@ t_map	*makemap(int map_size);
 t_map	*increase_mapsize(t_map *map);
 void	set_voffset(int *coords, int start, int offset);
 void	set_hoffset(int *array, int start);
-int		check_string(char *str);
+int		ft_check_string(char *str);
 int		*create_coords(char *str);
 void	set_relative(int *coords, int start);
 int		error_output(void);

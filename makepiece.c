@@ -6,12 +6,15 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:58:58 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/02/11 14:28:31 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:57:58 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+/*
+** constructs each piece with malloc and attributes all params of the struct.
+*/
 t_piece	*makepiece(int *coords, char tetriletter, int start)
 {
 	t_piece	*piece;
@@ -34,6 +37,7 @@ t_piece	*makepiece(int *coords, char tetriletter, int start)
 		i++;
 		start++;
 	}
+	piece->cancel = 0;
 	piece->letter = tetriletter;
 	return (piece);
 }

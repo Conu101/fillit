@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:52:12 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/01/12 13:18:00 by ctrouve          ###   ########.fr       */
+/*   Updated: 2021/12/13 14:38:22 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ char	*ft_strnew(size_t size)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(*str) * (size + 1));
-	if (str)
+	if (size >= 0)
 	{
-		ft_memset(str, '\0', (size + 1));
-		return (str);
+		str = (char *)malloc(sizeof(*str) * (size + 1));
+		if (str)
+		{
+			ft_memset(str, '\0', (size + 1));
+			return (str);
+		}
 	}
 	return (NULL);
 }

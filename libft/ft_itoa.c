@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:29:50 by ctrouve           #+#    #+#             */
-/*   Updated: 2021/12/23 10:49:05 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/11/13 12:02:00 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,54 +18,43 @@
 
 #include "libft.h"
 
-static char	*ft_array(char *x, unsigned int number, long int len)
+static size_t	get_length(int n)
 {
-	while (number > 0)
-	{
-		x[len--] = '0' + (number % 10);
-		number = number / 10;
-	}
-	return (x);
+	if (n / 10 == 0)
+		return (1 + (n < 0));
+	return (1 + get_length(n / 10));
 }
 
-static long int	ft_len(int n)
+static void	setnbr(int n, char *str, size_t len)
 {
-	long int	len;
+	long int	ln;
+	size_t		first;
 
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
+	ln = n;
+	first = 0;
+	if (ln < 0)
 	{
-		len++;
-		n = n / 10;
+		*str = '-';
+		ln = -ln;
+		++first;
 	}
-	return (len);
+	while (len-- > first)
+	{
+		str[len] = ln % 10 + '0';
+		ln /= 10;
+	}
 }
 
 char	*ft_itoa(int n)
 {
-	char			*x;
-	long int		len;
-	unsigned int	number;
-	int				sign;
+	size_t	len;
+	char	*str;
 
-	sign = 1;
-	len = ft_len(n);
-	x = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(x))
+	len = get_length(n);
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (!str)
 		return (NULL);
-	x[len--] = '\0';
-	if (n == 0)
-		x[0] = '0';
-	if (n < 0)
-	{
-		sign *= -1;
-		number = n * -1;
-		x[0] = '-';
-	}
-	else
-		number = n;
-	x = ft_array(x, number, len);
-	return (x);
+	setnbr(n, str, len);
+	str[len] = 0;
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_coords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:12:54 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/07 14:48:04 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:00:26 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** This function checks that there's a suitable amount of parts per 
 ** terimino, and that they have the correct amount of links between them.
 */
-static	int	cnt_link_tet_test(size_t *cnt_link_tet)
+static int	cnt_link_tet_test(size_t *cnt_link_tet)
 {
 	if ((cnt_link_tet[1] % 3 != 0 && cnt_link_tet[1] % 4 != 0) || \
 	cnt_link_tet[0] % 4 != 0 || cnt_link_tet[1] == 0)
@@ -79,7 +79,7 @@ int	*split_and_offset(char *str, size_t *ijk, size_t len, int *coords)
 	return (coords);
 }
 
-/* 
+/*
 ** Creates the coordinate array and other required variables.
 */
 int	*create_coords(char *str)

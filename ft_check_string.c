@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_string.c                                     :+:      :+:    :+:   */
+/*   ft_check_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:37:14 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/12 13:01:51 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/02/01 14:47:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** check that the tetriminos are comprised of only the allowed symbols, and 
 ** that the delimiting symbols (newlines) are in the correct position.
 */
-int	check_string(char *str)
+int	ft_check_string(char *str)
 {
 	int	ijk[3];
 
