@@ -58,10 +58,8 @@
     <img src="images/noun-c-file-896983.png" alt="Logo" width="80" height="80">
   </a>
 
-The goal of this project is to code a variant of the famous game Tetris: a list of teriminos (4 blocks arranged in various shapes similarly to those found 
-in Tetris (is provided in a text file, as successive shapes drawn with '#' and '.'.
-The goal is to find the smallest possible square within which all blocks can be placed, with each block at their most top-left possible position. There can be 
-between 1 and 26 tetriminos, separated by a newline in the text file.
+The goal of this project is to code a variant of the famous game Tetris: a list of tetriminos (4 blocks arranged in various shapes similarly to those found in Tetris) is provided in a text file, as successive shapes drawn with '#' and '.'.
+The goal is to find the smallest possible square within which all blocks can be placed, with each block at their most top-left possible position. There can be between 1 and 26 tetriminos, separated by a newline in the text file.
 
 The result must be displayed in the standard output, with the first tetrimino represented by the letter A, the second by B, and so on.
 
