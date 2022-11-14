@@ -159,7 +159,7 @@ The executable "fillit" is available in this repo for direct use, but the projec
 ## Usage
 
 
-	ctrouve@Constances-MBP fillit_git % ./fillit testfiles/trial26.txt
+	user@usermachine fillit_git % ./fillit testfiles/trial26.txt
 
 
 	AAB.C.DEEF.
